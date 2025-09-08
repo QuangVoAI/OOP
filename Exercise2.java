@@ -1,21 +1,27 @@
-import java.util.Scanner;
+import java.util.*;
 public class Exercise2 {
-    public static void triangleArea(double base, double height){
-        
-        double area = 0.5 * base * height;
-        System.out.println("The area of the triangle is: " + area);
+    public static boolean isEven(int n){
+
+        if (n % 2 == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+    // return n % 2 == 0;
+    // return n % 2 == 0 ? true : false;
 
-    public static void main (String[] args){
+    public static void main(String[] args){
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the base of the triangle: ");
-        double base = sc.nextDouble();
-        System.out.print("Enter the height of the triangle: ");
-        double height = sc.nextDouble();
-
-        triangleArea(base, height);
-        sc.close();
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Enter an integer: ");
+        int n = sc.nextInt();
+        if (isEven(n)){
+            System.out.println(n + " is even.");
+        }
+        else{
+            System.out.println(n + " is odd.");
+        }
     }
 }
-//(area = 1/2 * base * height)

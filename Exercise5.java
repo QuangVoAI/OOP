@@ -1,24 +1,28 @@
-import java.util.Scanner;
 public class Exercise5 {
-    public static void isLeapYear (int year){
+    public static void printOut (int n){
         
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
-            System.out.println("" + year + " is a leap year.");
+        for (int i = 1; i <= n; i += 2){
+            for (int j = 0; j < i; j++){
+                System.out.print("*");
+            }
+            System.out.println();
         }
-        else {
-            System.out.println("" + year + " is not a leap year.");
+
+        for (int i = n - 2; i >= 1; i -= 2){
+            for (int j = 0; j < i; j++){
+                System.out.print("*");
+            }
+            System.out.println();
         }
     }
 
     public static void main (String[] args){
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a year: ");
-        int year = sc.nextInt();
-        isLeapYear(year);
-        sc.close();
+        System.out.println("n = 3");
+        printOut(3);
+        System.out.println("n = 5");
+        printOut(5);
+        System.out.println("x = 7");
+        printOut(7);
     }
 }
-
-// chia het cho 4 khong chia het cho 100
-// hoac chia het cho 400
