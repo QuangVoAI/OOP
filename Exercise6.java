@@ -1,57 +1,34 @@
-import java.util.*;
+import java.util.Scanner;
 public class Exercise6 {
-    public static double avarageScore (double math, double literature, double english){
+    public static void arrangeAscending(int[] arr){
 
-        return (math * 2.0 + literature + english) / 4.0;
+        for (int i = 0; i < arr.length - 1; i++){
+            for (int j = i + 1; j < arr.length; j++){
+                if (arr[i] > arr[j]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        System.out.print("The array elements in ascending order are: ");
+        for (int i = 0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
     }
 
-    public static void studyRank (double avg){
-
-        if (avg >= 8.0){
-            System.out.println("Rank A");
-        }
-        else if (avg >= 5.0 && avg < 8.0){
-            System.out.println("Rank B");
-        }
-        else{
-            System.out.println("Rank C");
-        } 
-    }
-    
-    public static void main (String[] args){
-
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Math score: ");
-        double math, literature, english;
-        while (true){
-            math = sc.nextDouble();
-            if (math >= 0 && math <= 10){
-                break;
-            }
-            System.out.print("Invalid input. Please enter again: ");
-        }
-
-        System.out.print("Literature score: ");
-        while (true){
-            literature = sc.nextDouble();
-            if (literature >= 0 && literature <= 10){
-                break;
-            }
-            System.out.print("Invalid input. Please enter again: ");
-        }
-
-        System.out.print("English score: ");
-        while(true){
-            english = sc.nextDouble();
-            if (english >= 0 && english <= 10){
-                break;
-            }
-            System.out.print("Invalid input. Please enter again: ");
-        }
-
-        double avg = avarageScore(math, literature, english);
+    public static void main(String[] args) {
         
-        System.out.printf("Avarage Score is %.2f\n", avarageScore(math, literature, english));
-        studyRank(avg);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements n: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter " + n + " numbers: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        arrangeAscending(arr);
+        sc.close();
     }
 }

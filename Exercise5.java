@@ -1,28 +1,27 @@
+import java.util.Scanner;
+
 public class Exercise5 {
-    public static void printOut (int n){
-        
-        for (int i = 1; i <= n; i += 2){
-            for (int j = 0; j < i; j++){
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+    public static void sumElement(int []arr){
 
-        for (int i = n - 2; i >= 1; i -= 2){
-            for (int j = 0; j < i; j++){
-                System.out.print("*");
-            }
-            System.out.println();
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++){
+            sum += arr[i];
         }
+        System.out.print("The sum of elements in the array is: " + sum);
     }
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements n: ");
+        int n = sc.nextInt();
+        int []arr = new int[n];
 
-    public static void main (String[] args){
+        System.out.println("Enter " + n + " numbers: ");
+        for (int i = 0; i < n; i++){
+            arr[i] = sc.nextInt();
+        }
+        sumElement(arr);
+        sc.close();
 
-        System.out.println("n = 3");
-        printOut(3);
-        System.out.println("n = 5");
-        printOut(5);
-        System.out.println("x = 7");
-        printOut(7);
     }
 }

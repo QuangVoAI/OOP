@@ -1,32 +1,26 @@
-import java.util.*;
+import java.util.Scanner;
 public class Exercise3 {
-    public static int reverse (int n){
+    public static void maxValue(int []arr){
 
-        int rev = 0; //reverse
-        int rem; //remainder
-
-        while (n > 0){
-            rem = n % 10;
-            rev = rev * 10 + rem;
-            n /= 10;
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++){
+            if (arr[i] > max) max = arr[i];
         }
-        return rev;
+        System.out.println("The maximum value in the array is: " + max);
     }
 
-    /*
-     * resul = 0;
-     * while (n > 0){
-     * result += 10;
-     * result += n % 10;
-     * n /= 10;
-     * }
-     */
+    public static void main(String[] args){
 
-    public static void main (String[] args){
-
-        Scanner sc = new Scanner (System.in);
-        System.out.print("Enter number of n: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements n: ");
         int n = sc.nextInt();
-        System.out.printf("The reverse of %d is %d", n, reverse(n));
+        int []arr = new int[n];
+
+        System.out.println("Enter " + n + " numbers: ");
+        for (int i = 0; i < n; i++){
+            arr[i] = sc.nextInt();
+        }
+        maxValue(arr);
+        sc.close();
     }
 }
