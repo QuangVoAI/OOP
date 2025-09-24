@@ -1,26 +1,20 @@
-import java.util.Scanner;
 public class Exercise3 {
-    public static void maxValue(int []arr){
+    public static int sumEven(int[]arr){
 
-        int max = arr[0];
-        for (int i = 1; i < arr.length; i++){
-            if (arr[i] > max) max = arr[i];
+        if (arr == null || arr.length == 0){
+            throw new IllegalArgumentException("Must not be null or empty");
         }
-        System.out.println("The maximum value in the array is: " + max);
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] % 2 == 0) sum += arr[i];
+        }
+        return sum;
+
     }
 
-    public static void main(String[] args){
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements n: ");
-        int n = sc.nextInt();
-        int []arr = new int[n];
-
-        System.out.println("Enter " + n + " numbers: ");
-        for (int i = 0; i < n; i++){
-            arr[i] = sc.nextInt();
-        }
-        maxValue(arr);
-        sc.close();
+    public static void main(String[] args) {
+        
+        int []arr = {1,2,3,4,5,6,7,8,9,10};
+        System.out.println("Sum all even number: " + sumEven(arr));
     }
 }

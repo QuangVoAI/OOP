@@ -1,23 +1,19 @@
-import java.util.Scanner;
 public class Exercise1 {
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements n: ");
-        int n = sc.nextInt();
-        int [] arr = new int[n];
-
-        System.out.println("Enter " + n + " numbers: ");
-        for (int i = 0; i < n; i++){
-            arr[i] = sc.nextInt();
-
-        }
+    public static int findMax(int arr[]){
         
-        System.out.println("The array elements are: ");
-        for (int i = 0; i < arr.length; i++){
-            System.out.print(arr[i] + " ");
+        if (arr == null || arr.length == 0){
+            throw new IllegalArgumentException("Must not be null or empty");
         }
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++){
+            if (arr[i] > max) max = arr[i]; 
+        }
+        return max;
+    }
 
-        sc.close();
+    public static void main (String[] args){
+
+        int []arr = {1,2,3,4,5};
+        System.out.println("Maximum value of an array: " + findMax(arr));
     }
 }

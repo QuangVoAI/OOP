@@ -1,22 +1,19 @@
-import java.util.Scanner;
+import java.util.Arrays;
+
 public class Exercise9 {
-    public static boolean isEven(int n){
-        return n % 2 == 0;
-    }
-
-    public static void main (String[] args){
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number n: ");
-        int n = sc.nextInt();
-        while (n != 1){
-            if (isEven(n)){
-                System.out.printf("%d is even, so we take n / 2: ", n);
-            }
-            else {
-                System.out.printf("%d is odd, so we take 3n + 1: ", n);
-            }
+    public static int thirdLargest(int [] arr){
+        if (arr.length < 3){
+            throw new IllegalArgumentException("Array must have atleast 3 elements");
         }
-        sc.close();
+
+        Arrays.sort(arr);
+        return arr[arr.length - 3];
     }
+
+    public static void main(String[] args){
+        int []arr = {1,2,3,4,5,6,7,8,9};
+
+        System.out.println("The third largest number in array is: "+ thirdLargest(arr));
+    }
+
 }

@@ -1,49 +1,40 @@
-import java.util.Scanner;
-
 public class Exercise8 {
-    public static void deleteFirstGreaterElement(int []arr){
+    public static int[] divisibleNumber(int[] arr, int k){
+        // Bước 1: đếm số phần tử chia hết cho k
+        // Bước 2: tạo mảng mới có độ dài = count
+        //Bước 3: điền các phần tử chia hết cho k vào mảng result
 
-        int n = arr.length;
-        int index = -1;
-
+        int count = 0;
         for (int i = 0; i < arr.length; i++){
-            if (arr[i] > 0){
-                index = i;
-                break;
-            }
-            
+            if (arr[i] % k == 0) count++;
         }
 
-        if (index == -1){
-            System.out.println("No positive element found in the array.");
-            return;
-        }
+        int [] result = new int [count];
 
-        int []newArr = new int[n - 1];
-        for (int i = 0, j = 0; i < n; i++){
-            if (i != index){
-                newArr[j++] = arr[i];
+        int index = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] % k == 0){
+                result[index] = arr[i];
+                index++; 
             }
+
         }
-        System.out.println("The new array after deleting the first positive element is: ");
-        for (int i = 0; i < newArr.length; i++){
-            System.out.print(newArr[i] + " ");
-        }
+        return result;
     }
-    public static void main(String[] args){
-        
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements n: ");
-        int n = sc.nextInt();
-        int []arr = new int[n];
 
-        System.out.println("Enter " + n + " numbers: ");
-        for (int i = 0; i < n; i++){
-            arr[i] = sc.nextInt();
+    public static void main(String[] args) {
+        int []arr = {1,2,3,4,6,7,8,9,20};
+        int k = 4;
+
+        int [] result = divisibleNumber(arr, k);
+        System.out.printf("The array number divisible for %d is:\n", k);
+        System.out.print("[");
+        for (int i = 0; i < result.length; i++){
+            System.out.print(result[i]);
+            if (i < result.length - 1){
+                System.out.print(", ");
+            }
         }
-        deleteFirstGreaterElement(arr);
-
-        sc.close();
-
+        System.out.print("]");
     }
 }

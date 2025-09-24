@@ -1,25 +1,19 @@
-import java.util.Scanner;
 public class Exercise2 {
-    public static void printNegativeElement(int []arr){
+    public static int findMin(int arr[]){
 
-        System.out.print("The negative elements in the array are: ");
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] < 0) System.out.print(arr[i] + " ");
+        if (arr == null || arr.length == 0 ){
+            throw new IllegalArgumentException("Must not be null or empty");
         }
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++){
+            if (arr[i] < min) min = arr[i];
+        }
+        return min;
     }
-    public static void main(String[] args){
-        
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements n: ");
-        int n = sc.nextInt();
-        int []arr = new int[n];
 
-        System.out.println("Enter " + n + " numbers: ");
-        for (int i = 0; i < n; i++){
-            arr[i] = sc.nextInt();
-        }
-        printNegativeElement(arr);
-        sc.close();
+    public static void main (String[] args){
 
+        int []arr = {1,2,3,4,5,6};
+        System.out.println("Minimum value of an array: " + findMin(arr));
     }
 }
