@@ -1,27 +1,42 @@
+import java.util.Map;
+
 public class Exercise5 {
-    public static boolean isPrime(int n){
-        if (n <= 1) return false;
-        if (n == 2) return true; //2 is prime
-        if (n % 2 == 0) return false; //even number > 2 are not prime
-
-        for (int i = 3; i * i <= n; i+=2){
-            if (n % i == 0) return false; // ton tai uoc so ngoai 1 va 0 => khong phai prime
+    public static String [][] frequentWord(String paragraph){
+        if (paragraph == null || paragraph.trim().isEmpty()){
+            return new String[0][0];
         }
-        return true;
-    }
+        String cleanParagraph = paragraph.trim().replaceAll("[^a-z\\s]", " ");
+        String[] words = cleanParagraph.split("\\s+");
 
-    public static int countPrime(int[] arr){
-        int count = 0;
-        for (int num : arr){
-            if (isPrime(num)){
-                count ++;
-            }
+        Map<String, Integer> wordCount = new java.util.HashMap<>();
+        for (String word : words){
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
         }
-        return count;
+
+        String[][] result = new String[wordCount.size()][2];
+        int i = 0;
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+        result[i][0] = entry.getKey();                // cột 1: từ
+        result[i][1] = String.valueOf(entry.getValue()); // cột 2: số lần
+        i++;
+        }
+        return result;
+    }
+    
+    public static void printResult(String[][] arr) {
+        System.out.println("Word\tFrequency");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i][0] + "\t" + arr[i][1]);
+        }
     }
 
-    public static void main (String[] args){
-        int[] number = {1,2,3,4,5,6,7,8,9,10,11};
-        System.out.println("The number in array are: " + countPrime(number));
+    public static void main(String[] args) {
+        String paragraph = "You are living on a Plane. What you style Flatland is the vast level " +
+                "surface of what I may call a fluid, on, or in, the top of which you and your " +
+                "countrymen move about, without rising above it or falling below it.";
+
+        String[][] result = frequentWord(paragraph);
+        printResult(result);
     }
+
 }
